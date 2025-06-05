@@ -499,7 +499,7 @@
                       placeholder="Custom Amount"
                     />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group donation-payment-home">
                     <div>
                       <label for="Test_Donation"
                         ><strong>Payment Method</strong></label
@@ -546,6 +546,7 @@
                       >
                     </div>
                   </div>
+                  <img class="qr-code" src="./assets/images/upi-qr.jpeg"/>
                   <button type="submit" class="btn btn-default mt-3 btn-block">
                     Donate now
                   </button>
@@ -998,7 +999,7 @@
                   style="background: #fff; color: #000; border: 1px solid #333"
                 />
               </div>
-              <div class="form-group mb-4">
+              <div class="form-group mb-4 donation-payment">
                 <label class="mb-2"><strong>Payment Method</strong></label>
                 <div class="d-flex flex-wrap gap-2">
                   <div class="form-check form-check-inline">
@@ -1045,6 +1046,7 @@
                   </div>
                 </div>
               </div>
+              <img class="qr-code-modal" style="justify-self: center;" src="./assets/images/upi-qr.jpeg"/>
               <div class="text-center">
                 <button
                   type="submit"
@@ -1078,6 +1080,20 @@
           donateBtn.setAttribute("data-bs-target", "#donationModal");
           donateBtn.setAttribute("href", "#");
         }
+      });
+
+      const container = document.querySelector(".donation-payment-home");
+      const upiRadioMain = document.querySelector("#UPI");
+      const qrImg = document.querySelector(".qr-code");
+      container.addEventListener("click", () => {
+        qrImg.style.display = upiRadioMain.checked ? "block" : "none";
+      });
+
+      const containerModal = document.querySelector(".donation-payment");
+      const upiRadioModal = document.querySelector("#donor-payment-upi");
+      const qrImgModal = document.querySelector(".qr-code-modal");
+      containerModal.addEventListener("click", () => {
+        qrImgModal.style.display = upiRadioModal.checked ? "block" : "none";
       });
     </script>
 
@@ -1122,6 +1138,18 @@
         .mobile-sidenav-bottom {
           display: none;
         }
+      }
+
+      .qr-code {
+        display: none;
+        max-width: 250px;
+        height: auto;
+      }
+
+      .qr-code-modal {
+        display: none;
+        max-width: 175px;
+        height: auto;
       }
     </style>
   </body>

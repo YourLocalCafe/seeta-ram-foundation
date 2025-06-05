@@ -86,6 +86,12 @@
           display: none;
         }
       }
+
+      .qr-code {
+        display: none;
+        max-width: 250px;
+        height: auto;
+      }
     </style>
   </head>
   <body style="background: #fff">
@@ -858,7 +864,7 @@
                   style="background: #fff; color: #000; border: 1px solid #333"
                 />
               </div>
-              <div class="form-group mb-4">
+              <div class="form-group mb-4 donation-payment">
                 <label class="mb-2"><strong>Payment Method</strong></label>
                 <div class="d-flex flex-wrap gap-2">
                   <div class="form-check form-check-inline">
@@ -905,6 +911,7 @@
                   </div>
                 </div>
               </div>
+              <img class="qr-code" style="justify-self: center;" src="./assets/images/upi-qr.jpeg"/>
               <div class="text-center">
                 <button
                   type="submit"
@@ -938,6 +945,13 @@
           donateBtn.setAttribute("data-bs-target", "#donationModal");
           donateBtn.setAttribute("href", "#");
         }
+      });
+
+      const container = document.querySelector(".donation-payment");
+      const upiRadio = document.querySelector("#donor-payment-upi");
+      const qrImg = document.querySelector(".qr-code");
+      container.addEventListener("click", () => {
+        qrImg.style.display = upiRadio.checked ? "block" : "none";
       });
     </script>
   </body>
